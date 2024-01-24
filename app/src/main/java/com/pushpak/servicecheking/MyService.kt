@@ -21,4 +21,9 @@ class MyService : Service() {
         }
         return START_STICKY
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "service being killed...")
+    }
 }
