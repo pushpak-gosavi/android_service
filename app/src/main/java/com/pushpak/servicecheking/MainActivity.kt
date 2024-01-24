@@ -1,5 +1,6 @@
 package com.pushpak.servicecheking
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -21,11 +22,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnStartService.setOnClickListener{
 
+        binding.btnStartService.setOnClickListener{
+        Intent(this, MyIntentService::class.java).also {
+            startService(it)
+        }
+            binding.tvText.text="Service is running..."
         }
         binding.btnStopService.setOnClickListener{
-
+            MyIntentService.stopService()
+            binding.tvText.text = "Service is Stop"
         }
     }
 }
