@@ -40,4 +40,22 @@
         app:layout_constraintEnd_toEndOf="@id/btnStopService"
         android:layout_marginTop="50dp"/>
 
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvText"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="@id/tvText"
+        app:layout_constraintEnd_toEndOf="@id/tvText"
+        android:id="@+id/edtData"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edtData"
+        android:layout_marginTop="50dp"
+        android:id="@+id/btnSendData"
+        app:layout_constraintStart_toStartOf="@id/edtData"
+        app:layout_constraintEnd_toEndOf="@id/edtData"
+        android:text="Send Data"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

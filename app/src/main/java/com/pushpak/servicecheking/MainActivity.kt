@@ -2,6 +2,7 @@ package com.pushpak.servicecheking
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -24,14 +25,38 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnStartService.setOnClickListener{
-        Intent(this, MyIntentService::class.java).also {
-            startService(it)
-        }
+            /**
+             * Intent Service program
+             */
+//        Intent(this, MyIntentService::class.java).also {
+//            startService(it)
+//        }
+
+            /**
+             * Service Program
+             */
+
+            Intent(this, MyService::class.java).also {
+                startService(it)
+            }
+
             binding.tvText.text="Service is running..."
         }
         binding.btnStopService.setOnClickListener{
-            MyIntentService.stopService()
+            //MyIntentService.stopService()
+            Intent(this,MyService::class.java).also {
+                Log.d("MYService","Service is stopping...")
+                stopService(it)
+            }
             binding.tvText.text = "Service is Stop"
+        }
+
+        binding.btnSendData.setOnClickListener {
+            val data = binding.edtData.text.toString()
+            Intent(this, MyService::class.java).also {
+                it.putExtra("EXTRA_DATA", data)
+                startService(it)
+            }
         }
     }
 }
